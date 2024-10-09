@@ -1,5 +1,8 @@
 package com.pluralsight;
 import java.io.*;
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         try
@@ -9,6 +12,10 @@ public class Main {
 // create a BufferedReader to manage input stream
             BufferedReader bufReader = new BufferedReader(fileReader);
             String input;
+
+            Scanner keyboard = new Scanner(System.in);
+            System.out.println("What is the name of the file?");
+            String customEmployee = keyboard.nextLine();
 
             while((input = bufReader.readLine()) != null) {
                 if (input.startsWith("id")){
@@ -22,11 +29,12 @@ public class Main {
                 double payRate = Double.parseDouble(parts[3]);
 
                 Employee employee = new Employee(employeeID, name, hoursWorked, payRate);
-                //ayo record time?
+                //
 
                 try {
-                    // create a FileWriter
-                    FileWriter fileWriter = new FileWriter("src/main/resources/employeeIDs.txt", true);
+
+
+                    FileWriter fileWriter = new FileWriter("src/main/resources/" +customEmployee , true);
                     // create a BufferedWriter
                     BufferedWriter bufWriter = new BufferedWriter(fileWriter);
                     // write to the file
