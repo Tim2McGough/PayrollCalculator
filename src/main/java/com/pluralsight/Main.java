@@ -22,6 +22,7 @@ public class Main {
                 double payRate = Double.parseDouble(parts[3]);
 
                 Employee employee = new Employee(employeeID, name, hoursWorked, payRate);
+                //ayo record time?
 
                 try {
                     // create a FileWriter
