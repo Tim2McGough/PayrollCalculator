@@ -23,11 +23,23 @@ public class Main {
 
                 Employee employee = new Employee(employeeID, name, hoursWorked, payRate);
 
-                System.out.printf("Employee ID: %s, Name: %s, Gross Pay: %.2f\n",
+                try {
+                    // create a FileWriter
+                    FileWriter fileWriter = new FileWriter("src/main/resources/employeeIDs.txt", true);
+                    // create a BufferedWriter
+                    BufferedWriter bufWriter = new BufferedWriter(fileWriter);
+                    // write to the file
+                    String text;
+                    {
+                text = String.format("Employee ID: %s, Name: %s, Gross Pay: $%.2f\n",
                         employee.getEmployeeID(), employee.getName(), employee.getGrossPay());
-
-
-
+                        bufWriter.write(text);
+                    }
+                    // close the writer
+                    bufWriter.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
 
             }
